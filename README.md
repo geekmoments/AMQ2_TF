@@ -13,7 +13,41 @@ Este proyecto implementa un ambiente productivo para MLOps que consta de varios 
 - **MinIO**: Almacenamiento compatible con S3 (data lake)
 - **PostgreSQL**: Base de datos para Airflow y MLflow
 
-![Diagrama de servicios](final_assign.png)
+```mermaid
+graph TD
+    subgraph "Orchestration Layer"
+        A[Apache Airflow] --> |Scheduler| A1[DAG: Preprocess]
+        A --> |Scheduler| A2[DAG: Training]
+        A --> |Scheduler| A3[DAG: Validation]
+        A --> |Webserver UI| A4[User Interface]
+    end
+
+    subgraph "Model Management"
+        B[MLflow] --> |Experiment Tracking| B1[Model Registry]
+        B --> |Model Versioning| B2[Artifacts]
+    end
+
+    subgraph "Data Storage"
+        C[MinIO S3] --> |Storage| C1[s3://data]
+        C --> |Storage| C2[s3://mlflow]
+    end
+
+    subgraph "Database Layer"
+        D[PostgreSQL] --> |Database| D1[postgres:5432/mlflow_db]
+        D --> |Database| D2[postgres:5432/airflow]
+    end
+
+    subgraph "Serving Layer"
+        E[FastAPI] --> |REST API| E1[Model Endpoint]
+        E --> |Documentation| E2[Swagger UI]
+    end
+
+    A <--> D
+    B <--> C
+    B <--> D
+    A <--> B
+    E <--> B
+```
 
 ## Requisitos Previos
 
