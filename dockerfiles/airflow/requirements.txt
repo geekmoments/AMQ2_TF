@@ -1,0 +1,4 @@
+mlflow[extras]~=2.10
+boto3~=1.34
+xgboost
+lightgbm
