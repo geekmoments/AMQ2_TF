@@ -3,6 +3,12 @@
 
 Estructura de servicios para implementación de un sistema completo de MLOps para predicción de precios de vehículos.
 
+## Grupo de Trabajo
+- Nicolas Pinzon Aparicio (a1820)
+- Daniel Fernando Peña Pinzon (a1818)
+- Cesar Raúl Alan Cruz Gutierrez (2544003)
+- Federico Martin Zoya (a1828)
+
 ## Descripción del Proyecto
 
 Este proyecto implementa un ambiente productivo para MLOps que consta de varios servicios:
